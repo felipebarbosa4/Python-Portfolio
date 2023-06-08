@@ -1,0 +1,17 @@
+logfile entries:
+2023-06-07 14:00:00 Summary of events: rejections=3, drops=10, orders=67, messages=400, trades=5
+2023-06-07 14:01:00 Summary of events: trades=22, rejections=1, drops=3, messages=386, orders=158
+2023-06-07 14:02:00 Summary of events: messages=39, drops=1, trades=4, rejections=2
+2023-06-07 14:03:00 Summary of events: rejections=4, trades=3, drops=12, messages=450, orders=70
+2023-06-07 14:04:00 Summary of events: trades=15, rejections=0, drops=2, messages=390, orders=160
+2023-06-07 14:05:00 Summary of events: messages=45, drops=1, trades=5, rejections=3
+2023-06-07 14:00:00 Summary of events: drops=8, orders=76, rejections=2, messages=405, trades=7
+2023-06-07 14:01:00 Summary of events: messages=42, drops=5, trades=10, rejections=1, orders=90
+2023-06-07 14:02:00 Summary of events: trades=18, messages=35, rejections=3, drops=2
+2023-06-07 14:03:00 Summary of events: drops=10, messages=420, trades=6, rejections=4, orders=85
+2023-06-07 14:04:00 Summary of events: rejections=0, trades=12, drops=3, messages=415, orders=92
+2023-06-07 14:05:00 Summary of events: messages=48, trades=9, drops=2, rejections=2
+2023-06-07 14:06:00 Summary of events: orders=80, messages=410, trades=11, drops=7, rejections=1
+2023-06-07 14:07:00 Summary of events: rejections=2, messages=44, drops=4, trades=8, orders=95
+2023-06-07 14:08:00 Summary of events: trades=15, drops=3, rejections=1, messages=400, orders=82
+2023-06-07 14:09:00 Summary of events: orders=88, drops=6, messages=425, trades=10, rejections=3
