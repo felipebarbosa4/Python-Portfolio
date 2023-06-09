@@ -1,0 +1,36 @@
+# Initialize an empty dictionary to keep track of the frequency of names
+name_count = dict()
+
+# Specify the path to the file containing the names
+filepath = 'duplicates.txt'
+
+# Open the file in 'read' mode. The 'with' keyword ensures that the file is properly closed after it is no longer needed
+with open(filepath, 'r') as file:
+
+    # Loop through each line in the file
+    for line in file:
+
+        # Remove leading and trailing white space, and split the line into words based on spaces
+        names = line.strip().split()
+
+        # Iterate through each name in the names list
+        for name in names:
+
+            # Check if the name already exists in the name_count dictionary
+            if name in name_count:
+
+                # If the name exists, increment the count of that name by 1
+                name_count[name] += 1
+
+                # Print the name with its new count, appending the count to make it unique, followed by a newline character
+                print(f"{name}{name_count[name]}", end='\n')
+            # else?
+            else:
+                # If the name doesn't exist in the dictionary, add it with a count of 0
+                name_count[name] = 0
+
+                # Print the name as is (since it's the first occurrence, no need to make it unique)
+                print(name, end='\n')
+
+# Print a newline character to separate different sets of output
+print()

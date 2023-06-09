@@ -1,0 +1,47 @@
+# Importing the os module for interacting with the operating system
+import os
+# Importing the datetime module for dealing with dates and times
+import datetime
+
+# Define the name of the "output_folder" (variable folder_name)
+folder_name = "output_folder"
+# Using os.makedirs to create directories; and don't throw an error if the directory already exists
+os.makedirs(folder_name, exist_ok=True)
+
+# Initialize the total_trades counter to 0
+total_trades = 0
+
+# Open the 'logfile.txt' in read mode
+with open('logfile.txt', 'r') as file:
+    # Loop over each line in the file
+    for line in file:
+        # Check if the word 'trades' is in the line
+        if 'trades' in line:
+            # Split the line at ':' and take the last part, then split again at ',', variable events
+            events = line.split(':')[-1].split(',')
+            # Loop over each 'event' (item from the split)
+            for event in events:
+                # For each event, split using '=' to get the key and value
+                key_value = event.strip().split('=')
+                # If the key (first item) is 'trades', increment the total_trades by the value (second item)
+                if key_value[0] == 'trades':
+                    # increment the total_trades by the value (second item)
+                    total_trades += int(key_value[1])
+
+# Get the current date and time, formatted as hour-minute-second-month-day-year
+timestamp = datetime.datetime.now().strftime('%H-%M-%S-%m-%d-%Y')
+
+# Use os.getcwd() to get the current working directory, and os.path.join to create the full path to the output folder
+output_folder = os.path.join(os.getcwd(), folder_name)
+
+# Create the full path to the output file, combining the output folder and filename (which includes the timestamp)
+output_file = os.path.join(output_folder, f"{timestamp}.txt")
+
+# Open the output file in write mode
+with open(output_file, 'w') as output:
+    # Write the total_trades value to the file
+    output.write(str(total_trades))
+
+# Print a message to the console indicating where the output was saved
+print(f"Output saved to {output_file}.")
+

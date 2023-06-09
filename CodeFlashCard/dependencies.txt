@@ -1,0 +1,89 @@
+# Importing necessary modules
+import sys, atexit
+# Importing deque from collections for efficient FIFO operations
+from collections import deque
+
+# Initializing a dictionary to keep track of registered components
+_components_registered = {}
+# Initializing a list to keep track of started components
+_components_started = []
+
+# Defining a function to be executed when the program exits
+def __validate_behaviour():
+    # Referring to the global variables inside the function
+    global _components_registered, _components_started
+
+    # Checking if the count of started components is not equal to registered components or if no component is started
+    if len(_components_started) != len(_components_registered) or len(_components_started) == 0:
+        # If the check fails, printing the failure message
+        print("Test case failed.")
+        # Returning from the function
+        return
+    # If the check passes, printing the number of started components
+    print("Started {} components.".format(len(_components_started)))
+
+# Defining a function to start a component
+def start(component_name):
+    # Referring to the global variables inside the function
+    global _components_registered, _components_started
+
+    # Checking if all dependencies of the component have started
+    for dependency in _components_registered[component_name]:
+        # If a dependency is not started
+        if dependency not in _components_started:
+            # print failure message
+            print("Failed to start {} due to one or more upstream dependencies not having been started.".format(component_name))
+            # Return from the function
+            return
+    # If all dependencies have started, add the component to the started list
+    _components_started.append(component_name)
+
+# Defining a function to register a component and its dependencies
+def register_component(component_name, dependencies):
+    # Referring to the global variable inside the function
+    global _components_registered
+    # Add the component and its dependencies to the dictionary
+    _components_registered[component_name] = dependencies
+
+# Defining a function to start all registered components in order
+def start_all_components():
+    # Initializing a deque with all registered components
+    queue = deque(_components_registered.keys())
+
+    # Iterating until the queue is empty
+    while queue:
+        # Popping a component from the front of the queue
+        component = queue.popleft()
+        # Checking if all dependencies of the component have started
+        if all(dependency in _components_started for dependency in _components_registered[component]):
+            # If all dependencies have started, start the component
+            start(component)
+        # else
+        else:
+            # If any dependency hasn't started, push the component back into the queue
+            queue.append(component)
+
+# Defining a function to read inputs
+def _read_input():
+    # Iterating over lines in stdin
+    for line in sys.stdin:
+        # Splitting each line into names
+        names = line.strip().split(',')
+        # Registering the component and its dependencies
+        _register_component(names[0], names[1:])
+
+# Defining a function to register a component
+def _register_component(component_name, dependencies):
+    # Referring to the global variable inside the function
+    global _components_registered
+    # Add the component and its dependencies to the dictionary
+    _components_registered[component_name] = dependencies
+    # Call the register component function
+    register_component(component_name, dependencies)
+
+# Defining the main program
+if __name__ == '__main__':
+    # Read the input
+    _read_input()
+    # Start all components
+    start_all_components()
