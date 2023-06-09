@@ -1,0 +1,26 @@
+2014-08-04 09:20::03  Summary of events:
+messages=421, rejections=2, drops=10, orders=98, trades=5
+
+2014-08-04 09:20:08  Summary of events:
+messages=3862, trades=23, rejections=1, drops=3, orders=158
+
+2014-08-04 09:23:01  Summary of events:
+messages=39,  drops=1,  orders=158, trades=5, rejections=1
+
+2014-08-04 09:25:12  Summary of events:
+orders=158, messages=3862, trades=22, rejections=1, drops=3
+
+2014-08-04 09:26:45  Summary of events:
+orders=98, trades=5, messages=421, drops=10, rejections=2
+
+2014-08-04 09:30:02  Summary of events:
+orders=158, drops=3, trades=22, rejections=1, messages=3862
+
+2014-08-04 09:31:15  Summary of events:
+trades=5, drops=10, orders=98, rejections=2, messages=421
+
+2014-08-04 09:33:40  Summary of events:
+rejections=1, trades=4, drops=1, orders=158, messages=39
+
+2014-08-04 09:35:59  Summary of events:
+orders=98, rejections=2, trades=5, drops=10, messages=421

@@ -26,7 +26,7 @@ class Flashcard:
         return code_lines, code_comments
 
     def ask_question(self, line_no, previous_line, comment):
-        prompt = "\n{}\n# {}\nType line {}:".format(previous_line, comment, line_no)
+        prompt = "\n{}\n# {}\nType line {} > ".format(previous_line, comment, line_no)
         return input(prompt)
 
     def run_flashcard(self):
@@ -55,9 +55,14 @@ class Flashcard:
 def main():
     print("Welcome to the Code Flashcard Game!")
     print("Guess the missing lines of code based on the provided prompts.")
-    print("Which program would you like to test? Type 1, 2 or 3")
-    programChoice = int(input())
+    print("Which program would you like to test?")
+    print("[1] : Excract values from a log file")
+    print("[2] : Unique Names")
+    print("[3] : Dependencies in a start-up sequence")
+    programChoice = int(input("Type > "))
+
     if programChoice == 1:
+        print()
         flashcard = Flashcard('TestThis.txt')
     elif programChoice == 2:
         flashcard = Flashcard('Unique.txt')
